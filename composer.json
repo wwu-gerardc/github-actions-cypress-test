@@ -1,0 +1,30 @@
+{
+  "name": "wwuweb/ashlar",
+  "type": "drupal-theme",
+  "description": "Ashlar theme for Drupal",
+  "keywords": [
+    "drupal",
+    "theme",
+    "twig"
+  ],
+  "homepage": "https://bitbucket.org/wwuweb/ashlar/",
+  "license": "GPL-2.0",
+  "authors": [
+    {
+      "name": "WebTech - Western Washington University"
+    }
+  ],
+  "support": {
+    "issues": "https://wp.wwu.edu/webtech/",
+    "source": "https://bitbucket.org/wwuweb/ashlar/"
+  },
+  "minimum-stability": "dev",
+  "require": {    
+    "composer/installers": "^1.2"
+  },
+  "config": {
+    "allow-plugins": {
+      "composer/installers": true
+    }
+  }
+}

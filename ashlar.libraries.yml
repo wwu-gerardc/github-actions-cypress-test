@@ -1,0 +1,198 @@
+acalog:
+  version: 1.x
+  css:
+    theme:
+      http://catalog.wwu.edu/widget-api/widget-api.min.css: {}
+  js:
+    http://catalog.wwu.edu/widget-api/widget-api.min.js: {}
+    dist/js/acalog.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+accessible-mega-menu:
+  version: 1.x
+  js:
+    dist/js/accessible-mega-menu.js: {}
+  dependencies:
+    - core/jquery
+accordion:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/accordion.css: {}
+      dist/css/material-icons.css: {}
+  js:
+    build/js/accordion.js: {}
+alerts:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/alerts.css: {}
+  js:
+    build/js/alerts.js: {}
+  dependencies:
+    - core/jquery
+announcement:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/announcement.css: {}
+ashlar-base:
+  version: 1.x
+  css:
+    theme:
+      build/css/ashlar-base.css: {}
+  dependencies:
+    - core/normalize
+banner:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/banner.css: {}
+beyond-basics:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/beyond-basics-blocks.css: {}
+bg-video:
+  version: 1.x
+  js:
+    build/js/background-video.js: {}
+countdown:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/countdown.css: {}
+  js:
+    build/js/countdown.js: {}
+dialog:
+  version: 1.x
+  js:
+    build/js/dialog.js: {}
+donut-chart:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/donut-chart.css: {}
+  js:
+    build/js/donut-chart.js: {}
+event-tracking:
+  version: 1.x
+  js:
+    build/js/event-tracking.js: {}
+  dependencies:
+    - core/jquery
+    - core/jquery.once
+external-links-a11y:
+  version: 1.x
+  js:
+    build/js/external-links-a11y.js: {}
+fonts:
+  version: 1.x
+  css:
+    theme:
+      dist/css/font-families.css: {}
+fullpage:
+  version: 3.0.7
+  css:
+    theme:
+      dist/js/fullPage/fullpage.css: {}
+  js:
+    dist/js/fullPage/fullpage.js: {}
+image-link:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/image-link.css: {}
+image-with-description:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/image-with-description.css: {}
+mabel-facets:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/mabel-facets.css: {}
+material-icons:
+  version: 1.x
+  css:
+    theme:
+      dist/css/material-icons.css: {}
+menu-extras:
+  version: 1.x
+  js:
+    build/js/menu-extras.js: {}
+progress-tracker:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/progress-tracker.css: {}
+pullquote:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/pullquote.css: {}
+schedule:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/schedule.css: {}
+search:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/search.css: {}
+  js:
+    build/js/search.js: {}
+switcher:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/switcher.css: {}
+  js:
+    build/js/switcher.js: {}
+statistics:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/statistic.css: {}
+social-media-icons:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/social-media-icons.css: {}
+  js:
+    build/js/social-media-icons.js: {}
+testimonial:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/testimonial.css: {}
+user-login:
+  version: 1.x
+  js:
+    build/js/user-login.js: {}
+vimeo-tracking:
+  version: 309.54.810
+  js:
+    //extend.vimeocdn.com/ga/30954810.js:
+      { type: external, attributes: { defer: true } }
+wwu-header:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/pre-header.css: {}
+      build/css/components/wwu-header.css: {}
+  js:
+    build/js/logo.js: {}
+    build/js/pre-header.js: {}
+    build/js/wwu-header.js: {}
+wwu-footer:
+  version: 1.x
+  css:
+    theme:
+      build/css/components/wwu-footer.css: {}
+  js:
+    build/js/logo.js: {}
+    build/js/wwu-footer.js: {}

@@ -1,0 +1,11 @@
+/*------------------------------------------------------------------------------
+Helpers: Print
+--------------------------------------------------------------------------------
+Use this class to prevent an element from showing up on the print version of
+a site (for example, decorative elements that take up a lot of space)
+------------------------------------------------------------------------------*/
+.no-printing {
+  @media print {
+    display: none;
+  }
+}

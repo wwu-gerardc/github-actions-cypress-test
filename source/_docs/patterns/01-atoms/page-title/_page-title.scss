@@ -1,0 +1,26 @@
+/*------------------------------------------------------------------------------
+Molecule: Text - Page title
+--------------------------------------------------------------------------------
+------------------------------------------------------------------------------*/
+.page-title,
+.pane-page-title h1 {
+  text-align: center;
+  margin-bottom: var(--space--md);
+
+  &:after {
+    left: 50%;
+    transform: translatex(-50%);
+  }
+}
+
+.path-frontpage .block--page-title-block {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px); // IE support mainly, clip path is preferred
+  -webkit-clip-path: inset(50%);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  word-wrap: normal;
+  white-space: nowrap;
+}

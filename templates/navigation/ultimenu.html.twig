@@ -1,0 +1,81 @@
+{#
+/**
+ * @file
+ * Default theme implementation for Ultimenu block (the UL list or container).
+ * If you need to customize the actual Flyout, use region.html.twig instead.
+ *
+ * Available variables:
+ * - items: The renderable array containing the menu.
+ * - attributes.class: A string containing the CSS classes for the SECTION tag:
+ *   - ultimenu ultimenu--ORIENTATION ultimenu--MENU-NAME SKIN-NAME.
+ *   - ultimenu ultimenu--horizontal ultimenu--htb ultimenu--horizontal ultimenu--blue
+ *
+ * The following variables are provided for contextual information.
+ * - delta: (string) The ultimenu's block delta which is the cleaned menu name.
+ * - config: An array of the block's configuration settings. Includes
+ *   - menu_name: main-menu
+ *   - skin: modules/custom/ultimenu/skins/ultimenu--htb-tabs-blue.css
+ *   - skin_name: ultimenu--htb-tabs-blue (based on safe CSS file name)
+ *   - orientation:
+ *     - ultimenu--htb: horizontal to bottom
+ *     - ultimenu--htt: horizontal to top
+ *     - ultimenu--vtr: vertical to right
+ *     - ultimenu--vtl: vertical to left
+ *
+ * @see template_preprocess_ultimenu()
+ */
+#}
+{{ attach_library('ashlar/accessible-mega-menu') }}
+{{ attach_library('ashlar/menu-extras') }}
+{{ attach_library('ashlar/ulti-menu') }}
+{%
+  set classes = [
+    'ultimenu',
+    'ultimenu--' ~ delta,
+    config.orientation ? config.orientation|clean_class,
+    'v' in config.orientation ? 'ultimenu--vertical' : 'ultimenu--horizontal',
+    config.skin_name ? config.skin_name|clean_class,
+  ]
+%}
+{%
+  set item_classes = [
+    'ultimenu__item',
+    'uitem',
+  ]
+%}
+{% set id_attributes = attributes.id|clean_id %}
+{% apply spaceless %}
+{% if items -%}
+<nav class="main-navigation wwu-menu-closed" aria-label="Main">
+  {% include "@templates/label/label.twig" %}
+
+  <ul{{ attributes.addClass(classes) }}>
+    {%- for item in items -%}
+      <li{{ item.attributes.addClass(item_classes, item.flyout ? 'has-ultimenu', item.config.is_active == true ? 'ultimenu__item--active-page')}}>
+        {%- if item.link -%}
+          {% if item.title == 'home-icon' %}
+            {% block home %}
+              <a class="ultimenu__link" href="{{ url('<front>') }}"><span class="material-icons">home</span></a>
+            {% endblock %}
+          {% else %}
+            {% if item.flyout %}
+              <span class="component-icon expand-icon mobile" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/></svg></span>
+              <span class="component-icon expand-icon desktop" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px"><path d="M0 0h24v24H0V0z" fill="none"/><path d="M7.41 8.59 12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg></span>
+            {% endif %}
+            {{ item.link }}
+          {% endif %}
+          {% if item.below %}
+            {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+          {% endif %}
+        {%- endif -%}
+        {%- if item.flyout -%}
+          <section{{ item.flyout_attributes.addClass('ultimenu__flyout') }}>
+            {{ item.flyout }}
+          </section>
+        {%- endif -%}
+      </li>
+    {%- endfor -%}
+  </ul>
+</nav>
+{%- endif %}
+{% endapply %}

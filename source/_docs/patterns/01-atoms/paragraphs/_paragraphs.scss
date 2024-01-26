@@ -1,0 +1,58 @@
+/*------------------------------------------------------------------------------
+Atom: Text - Paragraph
+--------------------------------------------------------------------------------
+1. Custom Styles
+------------------------------------------------------------------------------*/
+p {
+  margin: 0 0 var(--space--md);
+  line-height: 1.7;
+  @media print {
+    page-break-inside: avoid;
+  }
+}
+/*------------------------------------------------------------------------------
+1. Custom Styles
+------------------------------------------------------------------------------*/
+.tagline {
+  display: block;
+  margin-bottom: var(--space--md);
+  margin-left: var(--space--md);
+  color: var(--h2-color);
+  font-style: italic;
+  font-display: swap;
+}
+h1 {
+  + .tagline,
+  + div .tagline {
+    color: var(--h1-color);
+    font-size: var(--h3-size);
+  }
+}
+h2 {
+  + .tagline,
+  + div .tagline {
+    color: var(--h2-color);
+    font-size: var(--h4-size);
+  }
+}
+h3 {
+  + .tagline,
+  + div .tagline {
+    color: var(--h3-color);
+    font-size: var(--h5-size);
+  }
+}
+h4 {
+  + .tagline,
+  + div .tagline {
+    color: var(--h4-color);
+    font-size: var(--h6-size);
+  }
+}
+h5 {
+  + .tagline,
+  + div .tagline {
+    color: var(--h5-color);
+    font-size: var(--default-font-size);
+  }
+}

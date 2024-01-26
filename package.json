@@ -1,0 +1,44 @@
+{
+  "name": "ashlar-drupal-theme",
+  "version": "1.0.0",
+  "description": "Ashlar theme for Drupal 8",
+  "devDependencies": {
+    "browserify": "^16.5.2",
+    "del": "^3.0.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.2.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-flatmap": "^1.0.2",
+    "gulp-flatten": "^0.4.0",
+    "gulp-group-css-media-queries": "^1.2.2",
+    "gulp-iife": "^0.4.0",
+    "gulp-jshint": "^2.1.0",
+    "gulp-minify": "^3.0.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^1.4.0",
+    "gulp-replace": "^1.1.4",
+    "gulp-sass": "^5.1.0",
+    "gulp-sass-glob": "^1.0.9",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-terser": "^2.1.0",
+    "gulp-uglify": "^3.0.2",
+    "gulp-wrap": "^0.15.0",
+    "jquery": "^3.6.0",
+    "jquery-listnav": "^2.4.10",
+    "jquery-once": "^2.2.1",
+    "jshint": "^2.13.4",
+    "pump": "^3.0.0",
+    "run-sequence": "^2.2.1",
+    "sass": "^1.52.2",
+    "vinyl-source-stream": "^2.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/wwuweb/ashlar/"
+  },
+  "license": "GPL-2.0",
+  "dependencies": {
+    "acorn": "^6.4.2",
+    "prettier": "2.2.1"
+  }
+}

@@ -1,0 +1,19 @@
+/*------------------------------------------------------------------------------
+Organism: Email signature
+--------------------------------------------------------------------------------
+------------------------------------------------------------------------------*/
+.email_signature_table {
+  width: initial;
+
+  tr {
+    background: transparent;
+  }
+
+  td {
+    border: var(--border-width--sm) solid transparent;
+  }
+
+  p {
+    font-size: inherit;
+  }
+}

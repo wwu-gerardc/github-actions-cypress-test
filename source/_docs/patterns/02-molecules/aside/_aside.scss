@@ -1,0 +1,18 @@
+/*------------------------------------------------------------------------------
+Molecule: Aside
+--------------------------------------------------------------------------------
+------------------------------------------------------------------------------*/
+@import "../../01-atoms/background-color/background-color-mixins.scss";
+.paragraph--type--aside {
+  @include lightest-gray-bg;
+
+  padding: var(--space--md);
+  .title {
+    margin-top: 0;
+  }
+}
+[data-theme="dark"] {
+  .paragraph--type--aside {
+    @include gray-bg;
+  }
+}

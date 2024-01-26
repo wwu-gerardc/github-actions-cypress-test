@@ -1,0 +1,27 @@
+{#
+/**
+ * @file
+ * Theme override for user login form
+ *
+ * Available variables
+ * - attributes: A list of HTML attributes for the wrapper element.
+ * - children: The child elements of the form.
+ *
+ * @see template_preprocess_form()
+ */
+#}
+{% if show_manual_login == true %}
+  {{ attach_library('ashlar/user-login') }}
+{% endif %}
+
+<form{{ attributes }}>
+  {{ element.cas_login_link }}
+  {% if show_manual_login == true %}
+    <button class="manual-login">Manual Login (non-Western accounts)</button>
+  {% endif %}
+  {{ element.name }}
+  {{ element.pass }}
+  {{ element.form_build_id['#children'] }}
+  {{ element.form_id['#children'] }}
+  {{ element.actions }}
+</form>

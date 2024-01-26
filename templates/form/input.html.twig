@@ -1,0 +1,20 @@
+{#
+/**
+ * @file
+ * Theme override for an 'input' #type form element.
+ *
+ * Available variables:
+ * - attributes: A list of HTML attributes for the input element.
+ * - children: Optional additional rendered elements.
+ *
+ * @see template_preprocess_input()
+ */
+#}
+
+{% if element['#description'] %}
+  {% set description_id = element['#attributes']['id']|clean_id ~ '--description' %}
+  
+  {% set attributes = attributes.setAttribute('aria-describedby', description_id) %}
+{% endif %}
+
+<input{{ attributes }} />{{ children }}

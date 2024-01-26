@@ -1,0 +1,54 @@
+/*------------------------------------------------------------------------------
+Atom: Icons
+--------------------------------------------------------------------------------
+------------------------------------------------------------------------------*/
+.material-icons {
+  -moz-font-feature-settings: "liga";
+  -moz-osx-font-smoothing: grayscale;
+
+  display: inline-block;
+  white-space: nowrap;
+  text-transform: none;
+  word-wrap: normal;
+  direction: ltr;
+  font-family: "Material Icons";
+  font-size: var(--icon-size--sm);
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1;
+}
+.component-icon {
+  fill: var(--default-text-color);
+}
+a,
+button.expand,
+.expand,
+.ultimenu__item {
+  .component-icon {
+    fill: var(--link-color);
+  }
+  &:visited {
+    .component-icon {
+      fill: var(--link-color--visited);
+    }
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    .component-icon {
+      fill: var(--link-color--focus);
+    }
+  }
+}
+button {
+  .component-icon {
+    fill: var(--button-color);
+  }
+  &:hover,
+  &:focus,
+  &:active {
+    .component-icon {
+      fill: var(--button-color--active);
+    }
+  }
+}

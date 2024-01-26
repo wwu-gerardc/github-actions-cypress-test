@@ -1,0 +1,31 @@
+name: Ashlar
+type: theme
+description: An atomic design Drupal theme for Western Washington University
+core_version_requirement: ^8.8 || ^9 || ^10
+base theme: false
+libraries:
+  - ashlar/ashlar-base
+  - ashlar/fonts
+  - ashlar/search
+  - ashlar/social-media-icons
+  - ashlar/wwu-header
+  - ashlar/wwu-footer
+regions:
+  wwu_header: Western Header
+  header: Splash Area
+  main_navigation: Main Navigation
+  content: Content
+  footer_left: Left Footer
+  footer_center: Center Footer
+  footer_right: Right Footer
+  footer_bottom: Bottom Footer
+components:
+  namespaces:
+    atoms:
+      - source/_docs/patterns/01-atoms
+    molecules:
+      - source/_docs/patterns/02-molecules
+    organisms:    
+      - source/_docs/patterns/03-organisms
+    templates:
+      - source/_docs/patterns/04-templates

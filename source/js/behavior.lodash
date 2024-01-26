@@ -1,0 +1,9 @@
+
+  Drupal.behaviors.<%= behavior.name %> = {
+
+    attach: function (context, settings) {
+      <%= behavior.contents %>
+    }
+
+  };
+
