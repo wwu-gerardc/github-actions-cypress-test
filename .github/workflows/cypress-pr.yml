@@ -28,5 +28,6 @@ jobs:
       - name: Run Cypress
         uses: cypress-io/github-action@v6
         with:
+          working-directory: source/_docs
           start: npm run docusaurus start
           browser: chrome
