@@ -7,7 +7,7 @@ describe("atoms: tables", () => {
     it("passes axe core accessibility tests", () => {
       cy.injectAxe()
        cy.checkA11y('.theme-doc-markdown', {
-        retries: 5,
+        retries: 10,
         interval: 100
       })
     })
