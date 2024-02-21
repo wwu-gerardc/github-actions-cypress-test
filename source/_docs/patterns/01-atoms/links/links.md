@@ -7,7 +7,7 @@
 <ul>
   <li><a href="#">This is a list of links</a></li>
   <li><a href="#">It is not styled as a menu</a></li>
-  <li><a href="#">It just has a lot of links</a></li>
+  <li><a href="#"><span aria-hidden="true">*</span></a></li>
 </ul>
 
 <h1><a href="#">This is an H1 link</a></h1>
