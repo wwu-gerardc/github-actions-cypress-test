@@ -9,7 +9,7 @@
       <th scope="col">Title</th>
       <th scope="col">Header</th>
       <th scope="col">Category</th>
-      <th scope="col">Date</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
