@@ -3,44 +3,37 @@ var copyButton = document.getElementById('copy_button');
 
 if (generateButton) {
   generateButton.onclick = function() {
-    var name = document.getElementById('full_name');
-    var pronouns =  document.getElementById('pronouns');
-    var job_title =  document.getElementById('job_title');
-    var department =  document.getElementById('department');
-    var department_website =  document.getElementById('department_website');
-    var unit =  document.getElementById('unit');
-    var unit_website =  document.getElementById('unit_website');
-    var street_address =  document.getElementById('street_address');
-    var city =  document.getElementById('city');
-    var zip_code =  document.getElementById('zip_code');
-    var mail_stop =  document.getElementById('mail_stop');
-    var email =  document.getElementById('email');
-    var phone_one =  document.getElementById('phone_one');
-    var phone_two =  document.getElementById('phone_two');
-    var teams_id =  document.getElementById('teams_id');
-
-    name = (name.value) ? name.value : '';
-    job_title = (job_title.value) ? job_title.value : '';
-    department = (department.value) ? department.value : '';
-    department_website = (department_website.value) ? department_website.value : '';
-    unit = (unit.value) ? unit.value : '';
-    unit_website = (unit_website.value) ? unit_website.value : '';
-    street_address = (street_address.value) ? street_address.value : '';
-    city = (city.value) ? city.value : '';
-    zip_code = (zip_code.value) ? zip_code.value : '';
-    mail_stop = (mail_stop.value) ? mail_stop.value : '';
-    email = (email.value) ? email.value : '';
-    phone_one = (phone_one.value) ? phone_one.value : '';
-    phone_two = (phone_two.value) ? phone_two.value : '';
-    teams_id = (teams_id.value) ? teams_id.value : '';
-
-    if (document.getElementById('include_pronoun_link').checked) {
-      pronouns = (pronouns.value) ? ' <span aria-hidden="true">|</span> <a href="https://pronouns.org/">' + pronouns.value + '</a>' : '';
-    } else {
-      pronouns = (pronouns.value) ? ' <span aria-hidden="true">|</span> ' + pronouns.value : '';
+    function getVal(id) {
+      var el = document.getElementById(id);
+      return (el && el.value) ? el.value : '';
     }
 
-    document.getElementById('field_name').innerText = name;
+    var full_name = getVal('full_name');
+    var pronouns = getVal('pronouns');
+    var job_title = getVal('job_title');
+    var department = getVal('department');
+    var department_website = getVal('department_website');
+    var unit = getVal('unit');
+    var unit_website = getVal('unit_website');
+    var street_address = getVal('street_address');
+    var city = getVal('city');
+    var zip_code = getVal('zip_code');
+    var mail_stop = getVal('mail_stop');
+    var email = getVal('email');
+    var phone_one = getVal('phone_one');
+    var phone_two = getVal('phone_two');
+    var teams_id = getVal('teams_id');
+
+    var includePronounLinkEl = document.getElementById('include_pronoun_link');
+    var includePronounLink = includePronounLinkEl && includePronounLinkEl.checked;
+
+    if (includePronounLink) {
+      pronouns = pronouns ? ' <span aria-hidden="true">|</span> <a href="https://pronouns.org/">' + pronouns + '</a>' : '';
+    } else {
+      pronouns = pronouns ? ' <span aria-hidden="true">|</span> ' + pronouns : '';
+    }
+
+    document.getElementById('field_full_name').innerText = full_name;
     document.getElementById('field_pronouns').innerHTML = pronouns;
     document.getElementById('field_job_title').innerText = job_title;
     document.getElementById('field_department').innerText = department;
@@ -71,18 +64,27 @@ if (generateButton) {
 
 if (copyButton) {
   copyButton.onclick = function(){
-    copyToClip(document.getElementById('email_signature').innerHTML);
-    copyButton.innerText ='Signature copied!';
+    var html = document.getElementById('email_signature').innerHTML;
+    copyToClip(html).then(function(){
+      copyButton.innerText = 'Signature copied!';
+    }).catch(function(){
+      copyButton.innerText = 'Copy failed';
+    });
   };
 }
-
 function copyToClip(str) {
-  function listener(e) {
-    e.clipboardData.setData("text/html", str);
-    e.clipboardData.setData("text/plain", str);
-    e.preventDefault();
+  if (navigator.clipboard && window.ClipboardItem) {
+    try {
+      var blobHtml = new Blob([str], { type: 'text/html' });
+      var blobText = new Blob([str], { type: 'text/plain' });
+      var item = new ClipboardItem({ 'text/html': blobHtml, 'text/plain': blobText });
+      return navigator.clipboard.write([item]);
+    } catch (e) {
+      return navigator.clipboard.writeText(str);
+    }
+  } else if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(str);
   }
-  document.addEventListener("copy", listener);
-  document.execCommand("copy");
-  document.removeEventListener("copy", listener);
-};
+
+  return Promise.reject(new Error('Clipboard API not available'));
+}

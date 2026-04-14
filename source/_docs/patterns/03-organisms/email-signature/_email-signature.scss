@@ -4,16 +4,39 @@ Organism: Email signature
 ------------------------------------------------------------------------------*/
 .email_signature_table {
   width: initial;
-
   tr {
     background: transparent;
   }
-
   td {
     border: var(--border-width--sm) solid transparent;
   }
-
   p {
     font-size: inherit;
   }
+}
+#signature-form {
+  .form-line {
+    display: flex;
+    flex-flow: row wrap;
+  }
+  .form-item {
+    margin-right: 12px;
+  }
+}
+#email_signature {
+  width: initial;
+}
+#email_signature   tr {
+  background: transparent;
+}
+#email_signature   td {
+  border: none;
+}
+#email_signature   p {
+  font-size: inherit;
+}
+#copy_button:focus {
+  color: #1c2023;
+  border-color: #1c2023;
+  background-color: #e3e7e9;
 }

@@ -112,7 +112,7 @@ This is the markup that gets used on https://marcom.wwu.edu/email-signature
       
       <td class="info" style="vertical-align: top;">        
         <p style="font-family: 'Segoe UI Web (West European)',Segoe UI,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,sans-serif; font-size: 14px; padding-top: 2px;">
-          <span id="field_name" style="font-weight: 700; font-size: 16px;">Full Name</span><span id="field_pronouns"> <span aria-hidden="true">|</span> <span style="font-style: italic;">they/them/theirs</span></span><br />
+          <span id="field_full_name" style="font-weight: 700; font-size: 16px;">Full Name</span><span id="field_pronouns"> <span aria-hidden="true">|</span> <span style="font-style: italic;">they/them/theirs</span></span><br />
           <span id="field_job_title">Job Title</span><br />
           <span id="field_department" style="font-weight: 700;"">Department Name</span><br/>
           <span id="field_unit">Unit</span><br />
