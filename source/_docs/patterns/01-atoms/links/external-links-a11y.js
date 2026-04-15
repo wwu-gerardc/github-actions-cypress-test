@@ -13,6 +13,10 @@ const targetBlank = document.querySelectorAll(
 );
 
 for (let link of targetBlank) {
+    // Skip if already processed
+  if (link.hasAttribute('data-a11y-processed')) {
+    continue;
+  }
   let text = document.createElement("span");
   text.innerHTML = " (opens in new tab)";
   text.classList.add("visually-hidden");
@@ -23,4 +27,7 @@ for (let link of targetBlank) {
   icon.setAttribute("aria-hidden", "true");
 
   link.append(text, icon);
+
+  // Mark as processed, avoid duplicating the loop
+  link.setAttribute('data-a11y-processed', 'true');
 }
