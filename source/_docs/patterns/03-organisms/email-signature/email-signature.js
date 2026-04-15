@@ -1,64 +1,64 @@
-var generateButton = document.getElementById('generate_signature');
-var copyButton = document.getElementById('copy_button');
+const generateButton = document.getElementById('generate_signature');
+const copyButton = document.getElementById('copy_button');
 
-if (generateButton) {
-  generateButton.onclick = function() {
-    function getVal(id) {
-      var el = document.getElementById(id);
-      return (el && el.value) ? el.value : '';
-    }
+var fields = new Map([
+  ["full_name", ''], 
+  ["pronouns", ''], 
+  ["job_title", ''],
+  ["department", ''],
+  ["department_website", ''],
+  ["unit", ''],
+  ["unit_website", ''],
+  ["street_address", '516 High Street'],  
+  ["city", 'Bellingham'],
+  ["state", 'WA'],
+  ["zip_code", '98225'],
+  ["mail_stop", ''],
+  ["email", ''],
+  ["phone_one", '360-650-'],
+  ["phone_two", ''],
+  ["teams_id", '']
+]);
 
-    var full_name = getVal('full_name');
-    var pronouns = getVal('pronouns');
-    var job_title = getVal('job_title');
-    var department = getVal('department');
-    var department_website = getVal('department_website');
-    var unit = getVal('unit');
-    var unit_website = getVal('unit_website');
-    var street_address = getVal('street_address');
-    var city = getVal('city');
-    var zip_code = getVal('zip_code');
-    var mail_stop = getVal('mail_stop');
-    var email = getVal('email');
-    var phone_one = getVal('phone_one');
-    var phone_two = getVal('phone_two');
-    var teams_id = getVal('teams_id');
+for (let [key] of fields) {      
+  if(localStorage.getItem(key)){
+    fields.set(key, localStorage.getItem(key));
+  }     
+  document.getElementsByName(key)[0].value = fields.get(key);     
+} 
 
-    var includePronounLinkEl = document.getElementById('include_pronoun_link');
-    var includePronounLink = includePronounLinkEl && includePronounLinkEl.checked;
+addPunctuation();
 
-    if (includePronounLink) {
-      pronouns = pronouns ? ' <span aria-hidden="true">|</span> <a href="https://pronouns.org/">' + pronouns + '</a>' : '';
-    } else {
-      pronouns = pronouns ? ' <span aria-hidden="true">|</span> ' + pronouns : '';
-    }
-
-    document.getElementById('field_full_name').innerText = full_name;
-    document.getElementById('field_pronouns').innerHTML = pronouns;
-    document.getElementById('field_job_title').innerText = job_title;
-    document.getElementById('field_department').innerText = department;
-    document.getElementById('field_unit').innerText = unit;
-    document.getElementById('field_street_address').innerText = street_address;
-    document.getElementById('field_city').innerText = city;
-    document.getElementById('field_zip_code').innerText = zip_code;
-    document.getElementById('field_email').innerHTML = '<a href="mailto:' + email + '">' + email + '</a>';
-
-    if(phone_one) { document.getElementById('field_phone_one').innerHTML = ' <span aria-hidden="true">|</span> <a href="tel:' + phone_one + '">' + phone_one + '</a>' }
-    else { document.getElementById('field_phone_one').innerHTML= '' }
-    if(phone_two) { document.getElementById('field_phone_two').innerHTML = ' <span aria-hidden="true">|</span> <a href="tel:' + phone_two + '">' + phone_two + '</a>' }
-    else { document.getElementById('field_phone_two').innerHTML= '' }
-
-    if(teams_id) { document.getElementById('field_teams_id').innerHTML = ' <span aria-hidden="true">|</span> <a href="https://teams.microsoft.com/l/chat/0/0?users=' + teams_id + '@wwu.edu">Message me on Teams</a>' }
-    else { document.getElementById('field_teams_id').innerHTML= '' }
-
-    if(mail_stop) { document.getElementById('field_mail_stop').innerHTML = ' <span aria-hidden="true">|</span> MS' + mail_stop }
-    else { document.getElementById('field_mail_stop').innerText= '' }
-
-    if(department_website) { document.getElementById('field_department').innerHTML = '<a href="' + department_website + '">' + department + '</a>'; }
-    if(unit_website) { document.getElementById('field_unit').innerHTML = '<a href="' + unit_website + '">' + unit + '</a>'; }
-
-    copyButton.innerText ='Copy to Clipboard';
-    copyButton.focus();
+if(generateButton) {
+  generateButton.onclick = function() {    
+    for (let [key, value] of fields) {        
+      fields.set(key, document.getElementsByName(key)[0].value);
+      localStorage.setItem(key, document.getElementsByName(key)[0].value); 
+    }  
+    
+    for (let [key, value] of fields) {    
+      switch(key) {
+        case "department":
+        document.getElementById(key).innerHTML = !fields.get("department_website") ? value : `<a href="${fields.get("department_website")}">${value}</a>`;
+        break;
+        case "unit":
+        document.getElementById(key).innerHTML = !fields.get("unit_website") ? value : `<a href="${fields.get("unit_website")}">${value}</a>`;
+        break;
+        case "email":
+        case "phone_one":
+        case "phone_two":
+        const link_type = (key == "email") ? "mailto" : "tel";
+        document.getElementById(key).innerHTML = `<a href="${link_type}:${value}">${value}</a></span>`;
+        break;     
+        case "teams_id":
+        document.getElementById(key).innerHTML = value ? `<a href="https://teams.microsoft.com/l/chat/0/0?users=${value}@wwu.edu">Message me on Teams</a>` : '';
+        break;  
+        default:
+        if(document.getElementById(key)) { document.getElementById(key).innerText = value; }
+        break;
+      }      
+    }  
+    addPunctuation();    
   }
 }
 
@@ -72,6 +72,7 @@ if (copyButton) {
     });
   };
 }
+
 function copyToClip(str) {
   if (navigator.clipboard && window.ClipboardItem) {
     try {
@@ -85,6 +86,35 @@ function copyToClip(str) {
   } else if (navigator.clipboard && navigator.clipboard.writeText) {
     return navigator.clipboard.writeText(str);
   }
-
+  
   return Promise.reject(new Error('Clipboard API not available'));
+}
+
+function addPunctuation() {  
+  const old_punctuation = document.querySelectorAll(".wwu-sig-punct")
+  for (let i = 0; i < old_punctuation.length; i++) {
+    old_punctuation[i].remove();
+  }
+  
+  const add_comma = ["full_name", "street_address", "state"]
+  const add_bar = ["mail_stop", "phone_one", "phone_two", "teams_id"]
+  
+  add_comma.forEach(function(item){
+    const span = document.createElement("span");
+    span.classList.add("wwu-sig-punct");
+    span.innerText = ", ";
+    if(document.getElementById(item).innerText && document.getElementById(item).nextElementSibling.innerText) {
+      document.getElementById(item).after(span);
+    } 
+  });
+
+  add_bar.forEach(function(item){
+    const span = document.createElement("span");
+    span.classList.add("wwu-sig-punct");
+    span.setAttribute("aria-hidden", true);
+    span.innerText = " | ";
+    if(document.getElementById(item).innerText && document.getElementById(item).previousElementSibling.innerText) {
+      document.getElementById(item).before(span);
+    } 
+  });
 }
