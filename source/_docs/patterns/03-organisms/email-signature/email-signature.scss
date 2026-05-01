@@ -1,0 +1,27 @@
+/*------------------------------------------------------------------------------
+Organism: Email signature
+--------------------------------------------------------------------------------
+------------------------------------------------------------------------------*/
+.form-line {
+  display: flex;
+  flex-flow: row wrap;
+  gap: var(--space--sm);
+  justify-content: start;
+}
+#email_signature {
+  width: initial;
+}
+#email_signature   tr {
+  background: transparent;
+}
+#email_signature   td {
+  border: none;
+}
+#email_signature   p {
+  font-size: inherit;
+}
+#copy_button:focus {
+  color: #1c2023;
+  border-color: #1c2023;
+  background-color: #e3e7e9;
+}
