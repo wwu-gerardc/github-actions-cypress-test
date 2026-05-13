@@ -36,12 +36,12 @@ if (
           const label = data[i].innerText;   
 
           li.innerHTML = `${label} - ${pct}%`;
-          li.style.setProperty('--percentage', `${pct}%`);
+          li.style.setProperty('--pct', pct);
           li.style.setProperty('--bg-color', `var(--chart-blue-${i})`);
-          li.style.setProperty('--offset', `${offset}`);
+          li.style.setProperty('--offset', `${offset}turn`);
 
           chart.append(li);
-          offset += parseInt(pct);
+          offset += parseInt(pct)/100;
         }    
       }
     }

@@ -9,14 +9,14 @@ Molecule: Charts - Donut Chart
 1. Chart colors
 ------------------------------------------------------------------------------*/
 :root {
-  --chart-blue-0: #429ad2;
+  --chart-blue-0: #002f5e;
   --chart-blue-1: #003f87;
-  --chart-blue-2: #7ab4da;
-  --chart-blue-3: #0060ab;
-  --chart-blue-4: #afcee1;
-  --chart-blue-5: #007ac8;
-  --chart-blue-6: #e3e7e9;
-  --chart-blue-7: #002f5e;
+  --chart-blue-2: #0060ab;
+  --chart-blue-3: #007ac8;
+  --chart-blue-4: #429ad2;
+  --chart-blue-5: #7ab4da;
+  --chart-blue-6: #afcee1;
+  --chart-blue-7: #e3e7e9;
 }
 $chart-blues: (
 #429ad2,
@@ -85,18 +85,29 @@ wwu-donut-chart {
   wwu-chart-item {
     display: none;
   }
+  ul {
+    display: grid;
+    place-items: center;
+  };
   li {
-    --angle: calc(360deg * var(--offset) / 100);
     aspect-ratio: 1;
-    --radius: 25vmin;
+    clip-path: shape(
+    from top,
+    arc to calc(50% + 50% * sin(var(--pct) * 3.6deg))
+    calc(50% - 50% * cos(var(--pct) * 3.6deg)) of 50% small cw,
+    line to center);
+    --pct: 25;
+    --radius: 200px;
 
     display: block;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
     width: calc(var(--radius) * 2);
-    border-radius: 50%;
-    background: conic-gradient(
-    from var(--angle),
-    var(--bg-color) 0% var(--percentage),
-    transparent var(--percentage) 100%
-    );
+    transform: rotate(var(--offset));
+    transform-origin: center;
+    background: var(--bg-color);
+    &:hover {
+      transform: scale(1.1) rotate(var(--offset));
+    }
   }
 }
