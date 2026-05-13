@@ -8,6 +8,16 @@ Molecule: Charts - Donut Chart
 /*------------------------------------------------------------------------------
 1. Chart colors
 ------------------------------------------------------------------------------*/
+:root {
+  --chart-blue-0: #429ad2;
+  --chart-blue-1: #003f87;
+  --chart-blue-2: #7ab4da;
+  --chart-blue-3: #0060ab;
+  --chart-blue-4: #afcee1;
+  --chart-blue-5: #007ac8;
+  --chart-blue-6: #e3e7e9;
+  --chart-blue-7: #002f5e;
+}
 $chart-blues: (
 #429ad2,
 #003f87,
@@ -72,108 +82,21 @@ url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut
 2. Chart styles
 ------------------------------------------------------------------------------*/
 wwu-donut-chart {
-  --chart-size: 100vw;
+  wwu-chart-item {
+    display: none;
+  }
+  li {
+    --angle: calc(360deg * var(--offset) / 100);
+    aspect-ratio: 1;
+    --radius: 25vmin;
 
-  display: flex;
-  flex-flow: row wrap;
-  align-items: center;
-  @media (min-width: 18.75rem) {
-    --chart-size: 18.75rem;
-  }
-  .title {
-    flex: 0 0 100%;
-  }
-  svg {
-    width: var(--chart-size);
-    height: var(--chart-size);
-    transform: rotate(-90deg);
+    display: block;
+    width: calc(var(--radius) * 2);
     border-radius: 50%;
-    background: transparent;
-  }
-  circle {
-    fill: transparent;
-    stroke-width: 15.915;
-    @for $i from 1 through list.length($chart-blues) {
-      &:nth-of-type(#{$i}) {
-        stroke: list.nth($chart-blues, $i);
-      }
-    }
-  }
-  ul {
-    li {
-      list-style: none;
-      &:before {
-        position: relative;
-        top: var(--border-width--lg);
-        display: inline-block;
-        width: var(--space--lg);
-        height: var(--space--lg);
-        margin-right: var(--space--xs);
-        content: "";
-        border: var(--border-width--md) solid transparent;
-      }
-      @for $i from 1 through list.length($chart-blues) {
-        &:nth-of-type(#{$i}) {
-          &:before {
-            background-color: list.nth($chart-blues, $i);
-            @media (forced-colors: active) {
-              background-image: list.nth($chart-blues-images, $i);
-            }
-          }
-        }
-      }
-    }
-  }
-  &.green {
-    circle {
-      @for $i from 1 through list.length($chart-greens) {
-        &:nth-of-type(#{$i}) {
-          stroke: list.nth($chart-greens, $i);
-        }
-      }
-    }
-    ul {
-      li {
-        @for $i from 1 through list.length($chart-greens) {
-          &:nth-of-type(#{$i}) {
-            &:before {
-              background-color: list.nth($chart-greens, $i);
-              @media (forced-colors: active) {
-                background-image: list.nth($chart-greens-images, $i);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  &.light-blue {
-    circle {
-      @for $i from 1 through list.length($chart-light-blues) {
-        &:nth-of-type(#{$i}) {
-          stroke: list.nth($chart-light-blues, $i);
-        }
-      }
-    }
-    ul {
-      li {
-        @for $i from 1 through list.length($chart-light-blues) {
-          &:nth-of-type(#{$i}) {
-            &:before {
-              background-color: list.nth($chart-light-blues, $i);
-              @media (forced-colors: active) {
-                background-image: list.nth($chart-light-blues-images, $i);
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-  &.pie {
-    circle {
-      fill: transparent;
-      stroke-width: 31.83;
-    }
+    background: conic-gradient(
+    from var(--angle),
+    var(--bg-color) 0% var(--percentage),
+    transparent var(--percentage) 100%
+    );
   }
 }
