@@ -37,11 +37,11 @@ if (
 
           li.innerHTML = `${label} - ${pct}%`;
           li.style.setProperty('--pct', pct);
-          li.style.setProperty('--bg-color', `var(--chart-blue-${i})`);
+          li.style.setProperty('--bg-color', `var(--chart-color-${i})`);
           li.style.setProperty('--offset', `${offset}turn`);
 
           chart.append(li);
-          offset += parseInt(pct)/100;
+          offset += parseFloat(pct)/100;
         }    
       }
     }

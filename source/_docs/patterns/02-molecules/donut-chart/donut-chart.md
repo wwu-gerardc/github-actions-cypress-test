@@ -61,25 +61,25 @@ Include the following script to use this component on your non-Drupal website or
 
 ## Green
 <wwu-donut-chart class="green" label="Student Population">
-    <wwu-chart-item value="9."> Freshman</wwu-chart-item>
-    <wwu-chart-item value="14."> Sophomore</wwu-chart-item>
-    <wwu-chart-item value="21."> Junior</wwu-chart-item>
-    <wwu-chart-item value="35."> Senior</wwu-chart-item>
+    <wwu-chart-item value="9.1"> Freshman</wwu-chart-item>
+    <wwu-chart-item value="14.8"> Sophomore</wwu-chart-item>
+    <wwu-chart-item value="21.9"> Junior</wwu-chart-item>
+    <wwu-chart-item value="35.2"> Senior</wwu-chart-item>
     <wwu-chart-item value="6.2"> Post Bac</wwu-chart-item>
     <wwu-chart-item value="2.7"> Grad Student</wwu-chart-item>
-    <wwu-chart-item value="4."> Alumni</wwu-chart-item>
-    <wwu-chart-item value="5."> Other</wwu-chart-item>
+    <wwu-chart-item value="4.5"> Alumni</wwu-chart-item>
+    <wwu-chart-item value="5.5"> Other</wwu-chart-item>
 </wwu-donut-chart>
 
 ```
 <wwu-donut-chart class="green" label="Student Population">
-    <wwu-chart-item value="9."> Freshman</wwu-chart-item>
-    <wwu-chart-item value="14."> Sophomore</wwu-chart-item>
-    <wwu-chart-item value="21."> Junior</wwu-chart-item>
-    <wwu-chart-item value="35."> Senior</wwu-chart-item>
+    <wwu-chart-item value="9.1"> Freshman</wwu-chart-item>
+    <wwu-chart-item value="14.8"> Sophomore</wwu-chart-item>
+    <wwu-chart-item value="21.9"> Junior</wwu-chart-item>
+    <wwu-chart-item value="35.2"> Senior</wwu-chart-item>
     <wwu-chart-item value="6.2"> Post Bac</wwu-chart-item>
     <wwu-chart-item value="2.7"> Grad Student</wwu-chart-item>
-    <wwu-chart-item value="4."> Alumni</wwu-chart-item>
-    <wwu-chart-item value="5."> Other</wwu-chart-item>
+    <wwu-chart-item value="4.5"> Alumni</wwu-chart-item>
+    <wwu-chart-item value="5.5"> Other</wwu-chart-item>
 </wwu-donut-chart>
 ```

@@ -8,26 +8,6 @@ Molecule: Charts - Donut Chart
 /*------------------------------------------------------------------------------
 1. Chart colors
 ------------------------------------------------------------------------------*/
-:root {
-  --chart-blue-0: #002f5e;
-  --chart-blue-1: #003f87;
-  --chart-blue-2: #0060ab;
-  --chart-blue-3: #007ac8;
-  --chart-blue-4: #429ad2;
-  --chart-blue-5: #7ab4da;
-  --chart-blue-6: #afcee1;
-  --chart-blue-7: #e3e7e9;
-}
-$chart-blues: (
-#429ad2,
-#003f87,
-#7ab4da,
-#0060ab,
-#afcee1,
-#007ac8,
-#e3e7e9,
-#002f5e
-);
 $chart-blues-images: (
 url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-1.png"),
 url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-2.png"),
@@ -38,16 +18,6 @@ url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut
 url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-7.png"),
 url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-8.png"),
 );
-$chart-light-blues: (
-#006ebb,
-#57b8f7,
-#1681ca,
-#7ecafa,
-#2c93d9,
-#b3d9f1,
-#42a6e8,
-#e3e7e9
-);
 $chart-light-blues-images: (
 url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-light-blue-1.png"),
 url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-light-blue-2.png"),
@@ -57,16 +27,6 @@ url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut
 url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-light-blue-6.png"),
 url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-light-blue-7.png"),
 url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-7.png"),
-);
-$chart-greens: (
-#006b3f,
-#c2dc2c,
-#358a30,
-#d3e570,
-#6aa921,
-#e4edb3,
-#9fc812,
-#f5f6f7
 );
 $chart-greens-images: (
 url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-green-1.png"),
@@ -82,12 +42,45 @@ url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut
 2. Chart styles
 ------------------------------------------------------------------------------*/
 wwu-donut-chart {
+  --chart-color-0: #002f5e;
+  --chart-color-1: #003f87;
+  --chart-color-2: #0060ab;
+  --chart-color-3: #007ac8;
+  --chart-color-4: #429ad2;
+  --chart-color-5: #7ab4da;
+  --chart-color-6: #afcee1;
+  --chart-color-7: #e3e7e9;
+  &.light-blue {
+    --chart-color-0: #006ebb;
+    --chart-color-1: #1681ca;
+    --chart-color-2: #2c93d9;
+    --chart-color-3: #42a6e8;
+    --chart-color-4: #57b8f7;
+    --chart-color-5: #7ecafa;
+    --chart-color-6: #b3d9f1;
+    --chart-color-7: #e3e7e9;
+  }
+  &.green {
+    --chart-color-0: #006b3f;
+    --chart-color-1: #c2dc2c;
+    --chart-color-2: #358a30;
+    --chart-color-3: #d3e570;
+    --chart-color-4: #6aa921;
+    --chart-color-5: #e4edb3;
+    --chart-color-6: #9fc812;
+    --chart-color-7: #f5f6f7;
+  }
   wwu-chart-item {
     display: none;
   }
   ul {
+    --radius: 200px;
+
+    position: relative;
     display: grid;
     place-items: center;
+    padding: 0;
+    border: solid gold;
   };
   li {
     aspect-ratio: 1;
@@ -96,18 +89,30 @@ wwu-donut-chart {
     arc to calc(50% + 50% * sin(var(--pct) * 3.6deg))
     calc(50% - 50% * cos(var(--pct) * 3.6deg)) of 50% small cw,
     line to center);
-    --pct: 25;
-    --radius: 200px;
 
     display: block;
     grid-column: 1 / span 1;
     grid-row: 1 / span 1;
     width: calc(var(--radius) * 2);
+    transition: transform var(--transition-speed--fast) ease;
     transform: rotate(var(--offset));
     transform-origin: center;
     background: var(--bg-color);
     &:hover {
-      transform: scale(1.1) rotate(var(--offset));
+      transform: scale(1.12) rotate(var(--offset));
     }
+  }
+  ul:after {
+    aspect-ratio: 1;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+    width: var(--radius);
+    content: "";
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    background: var(--page-background);
   }
 }
