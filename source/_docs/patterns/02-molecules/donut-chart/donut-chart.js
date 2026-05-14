@@ -35,6 +35,7 @@ if (
           data[i].innerHTML = `${label} - ${pct}%`;
           data[i].style.setProperty('--pct', pct);
           data[i].style.setProperty('--bg-color', `var(--chart-color-${i})`);
+          data[i].style.setProperty('--bg-image', `var(--chart-color-img-${i})`);
           data[i].style.setProperty('--offset', `${offset}turn`);
 
           chart.append(data[i]);

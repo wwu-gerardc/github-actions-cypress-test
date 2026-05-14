@@ -1,46 +1,8 @@
 /*------------------------------------------------------------------------------
 Molecule: Charts - Donut Chart
 --------------------------------------------------------------------------------
-1. Chart colors
-2. Chart styles
 ------------------------------------------------------------------------------*/
 @use "sass:list";
-/*------------------------------------------------------------------------------
-1. Chart colors
-------------------------------------------------------------------------------*/
-$chart-blues-images: (
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-1.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-2.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-3.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-4.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-5.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-6.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-7.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-8.png"),
-);
-$chart-light-blues-images: (
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-light-blue-1.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-light-blue-2.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-light-blue-3.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-light-blue-4.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-light-blue-5.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-light-blue-6.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-light-blue-7.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-blue-7.png"),
-);
-$chart-greens-images: (
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-green-1.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-green-2.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-green-3.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-green-4.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-green-5.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-green-6.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-green-7.png"),
-url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut-green-8.png"),
-);
-/*------------------------------------------------------------------------------
-2. Chart styles
-------------------------------------------------------------------------------*/
 wwu-donut-chart {
   --radius: 200px;
   figure {
@@ -83,6 +45,9 @@ wwu-donut-chart {
     transform: rotate(var(--offset));
     transform-origin: center;
     background: var(--bg-color);
+    @media(forced-colors: active) {
+      background-image: var(--bg-image);
+    }
     &:hover {
       transform: scale(1.12) rotate(var(--offset));
     }
@@ -97,6 +62,14 @@ wwu-donut-chart {
   --chart-color-5: #7ab4da;
   --chart-color-6: #afcee1;
   --chart-color-7: #e3e7e9;
+  --chart-color-img-0: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue-0.png");
+  --chart-color-img-1: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue-1.png");
+  --chart-color-img-2: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue-2.png");
+  --chart-color-img-3: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue-3.png");
+  --chart-color-img-4: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue-4.png");
+  --chart-color-img-5: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue-5.png");
+  --chart-color-img-6: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue-6.png");
+  --chart-color-img-7: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue-7.png");
   &.light-blue {
     --chart-color-0: #006ebb;
     --chart-color-1: #1681ca;
@@ -106,6 +79,13 @@ wwu-donut-chart {
     --chart-color-5: #7ecafa;
     --chart-color-6: #b3d9f1;
     --chart-color-7: #e3e7e9;
+    --chart-color-img-0: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue--lighter-0.png");
+    --chart-color-img-1: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue--lighter-1.png");
+    --chart-color-img-2: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue--lighter-2.png");
+    --chart-color-img-3: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue--lighter-3.png");
+    --chart-color-img-4: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue--lighter-4.png");
+    --chart-color-img-5: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue--lighter-5.png");
+    --chart-color-img-6: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue--lighter-6.png");
   }
   &.green {
     --chart-color-0: #006b3f;
@@ -116,5 +96,13 @@ wwu-donut-chart {
     --chart-color-5: #e4edb3;
     --chart-color-6: #9fc812;
     --chart-color-7: #f5f6f7;
+    --chart-color-img-0: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-green-0.png");
+    --chart-color-img-1: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-green-1.png");
+    --chart-color-img-2: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-green-2.png");
+    --chart-color-img-3: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-green-3.png");
+    --chart-color-img-4: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-green-4.png");
+    --chart-color-img-5: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-green-5.png");
+    --chart-color-img-6: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-green-6.png");
+    --chart-color-img-7: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-green-7.png");
   }
 }
