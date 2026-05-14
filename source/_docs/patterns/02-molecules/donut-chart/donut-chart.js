@@ -7,9 +7,7 @@ if (
     <!--link rel="stylesheet" href="https://ashlar.blob.core.windows.net/ashlar-theme-files/css/components/donut-chart.css" /-->
     <figure>
       <figcaption>
-      </figcaption>
-      <ul>
-      </ul>
+      </figcaption>      
     </figure>
   `;
   
@@ -27,20 +25,20 @@ if (
         this.querySelector("figcaption").innerText = this.getAttribute("label");
 
         const data = this.querySelectorAll("wwu-chart-item");
-        const chart = this.querySelector("ul");
+        const chart = this.querySelector("figure");
         let offset = 0;
 
         for (let i = 0; i < data.length; i++) {
-          const li = document.createElement("li");
           const pct = data[i].getAttribute("value");
           const label = data[i].innerText;   
 
-          li.innerHTML = `${label} - ${pct}%`;
-          li.style.setProperty('--pct', pct);
-          li.style.setProperty('--bg-color', `var(--chart-color-${i})`);
-          li.style.setProperty('--offset', `${offset}turn`);
+          data[i].innerHTML = `${label} - ${pct}%`;
+          data[i].style.setProperty('--pct', pct);
+          data[i].style.setProperty('--bg-color', `var(--chart-color-${i})`);
+          data[i].style.setProperty('--offset', `${offset}turn`);
 
-          chart.append(li);
+          chart.append(data[i]);
+
           offset += parseFloat(pct)/100;
         }    
       }

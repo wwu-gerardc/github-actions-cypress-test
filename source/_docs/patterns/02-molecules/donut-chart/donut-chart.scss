@@ -42,6 +42,53 @@ url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/donut
 2. Chart styles
 ------------------------------------------------------------------------------*/
 wwu-donut-chart {
+  --radius: 200px;
+  figure {
+    position: relative;
+    display: grid;
+    place-items: center;
+    padding: 0;
+    border: solid gold;
+  }
+  figcaption {
+    aspect-ratio: 1;
+
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    display: grid;
+    place-content: center;
+    width: var(--radius);
+    content: "";
+    transform: translate(-50%, -50%);
+    text-align: center;
+    border-radius: 50%;
+    background: var(--page-background);
+  }
+  wwu-chart-item {
+    aspect-ratio: 1;
+    clip-path: shape(
+    from top,
+    arc to calc(50% + 50% * sin(var(--pct) * 3.6deg))
+    calc(50% - 50% * cos(var(--pct) * 3.6deg)) of 50% small cw,
+    line to center);
+
+    display: none;
+    display: block;
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 1;
+    width: calc(var(--radius) * 2);
+    transition: transform var(--transition-speed--fast) ease;
+    transform: rotate(var(--offset));
+    transform-origin: center;
+    background: var(--bg-color);
+    &:hover {
+      transform: scale(1.12) rotate(var(--offset));
+    }
+  }
+}
+wwu-donut-chart {
   --chart-color-0: #002f5e;
   --chart-color-1: #003f87;
   --chart-color-2: #0060ab;
@@ -69,50 +116,5 @@ wwu-donut-chart {
     --chart-color-5: #e4edb3;
     --chart-color-6: #9fc812;
     --chart-color-7: #f5f6f7;
-  }
-  wwu-chart-item {
-    display: none;
-  }
-  ul {
-    --radius: 200px;
-
-    position: relative;
-    display: grid;
-    place-items: center;
-    padding: 0;
-    border: solid gold;
-  };
-  li {
-    aspect-ratio: 1;
-    clip-path: shape(
-    from top,
-    arc to calc(50% + 50% * sin(var(--pct) * 3.6deg))
-    calc(50% - 50% * cos(var(--pct) * 3.6deg)) of 50% small cw,
-    line to center);
-
-    display: block;
-    grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
-    width: calc(var(--radius) * 2);
-    transition: transform var(--transition-speed--fast) ease;
-    transform: rotate(var(--offset));
-    transform-origin: center;
-    background: var(--bg-color);
-    &:hover {
-      transform: scale(1.12) rotate(var(--offset));
-    }
-  }
-  ul:after {
-    aspect-ratio: 1;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    display: block;
-    width: var(--radius);
-    content: "";
-    transform: translate(-50%, -50%);
-    border-radius: 50%;
-    background: var(--page-background);
   }
 }
