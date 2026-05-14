@@ -3,53 +3,93 @@ Molecule: Charts - Donut Chart
 --------------------------------------------------------------------------------
 ------------------------------------------------------------------------------*/
 @use "sass:list";
+@use "../../00-utilities/utilities" as *;
 wwu-donut-chart {
   --radius: 200px;
   figure {
     position: relative;
     display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: repeat(8, 1fr);
     place-items: center;
+    margin-bottom: var(--space--lg);
     padding: 0;
-    border: solid gold;
+    column-gap: var(--space--xl);
   }
   figcaption {
-    aspect-ratio: 1;
-
-    position: absolute;
     z-index: 1;
-    top: 50%;
-    left: 50%;
     display: grid;
+    grid-column: 2/ span 1;
+    grid-row: 1/ -1;
     place-content: center;
+    aspect-ratio: 1;
     width: var(--radius);
+    margin: 0;
+    padding: 0;
     content: "";
-    transform: translate(-50%, -50%);
     text-align: center;
     border-radius: 50%;
     background: var(--page-background);
   }
   wwu-chart-item {
-    aspect-ratio: 1;
-    clip-path: shape(
-    from top,
-    arc to calc(50% + 50% * sin(var(--pct) * 3.6deg))
-    calc(50% - 50% * cos(var(--pct) * 3.6deg)) of 50% small cw,
-    line to center);
-
-    display: none;
-    display: block;
-    grid-column: 1 / span 1;
-    grid-row: 1 / span 1;
-    width: calc(var(--radius) * 2);
+    display: grid;
+    grid-column: 1/ span 1;
+    grid-template-columns: auto auto;
+    justify-self: start;
+    place-content: center;
+    padding: var(--space--2xs) var(--space--xs);
+    column-gap: var(--space--xs);
+    cursor: pointer;
     transition: transform var(--transition-speed--fast) ease;
-    transform: rotate(var(--offset));
-    transform-origin: center;
-    background: var(--bg-color);
-    @media(forced-colors: active) {
-      background-image: var(--bg-image);
+    &:before {
+      aspect-ratio: 1;
+      width: var(--space--xl);
+      content: "";
+      background: var(--bg-color);
+      @media(forced-colors: active) {
+        background-image: var(--bg-image);
+      }
     }
-    &:hover {
-      transform: scale(1.12) rotate(var(--offset));
+    &:hover,
+    &:active,
+    &:focus,
+    &:has(+ .slice:hover) {
+      @include lightest-blue-bg;
+
+      border-radius: var(--border-radius--round);
+      outline: var(--outline--unset);
+      &:before {
+        outline: solid contrast-color(var(--bg-color)) var(--border-width--sm);
+      }
+      + .slice {
+        transform: scale(1.12) rotate(var(--offset));
+      }
+    }
+    + .slice {
+      display: block;
+      clip-path: shape(
+      from top,
+      arc to calc(50% + 50% * sin(var(--pct) * 3.6deg))
+      calc(50% - 50% * cos(var(--pct) * 3.6deg)) of 50% small cw,
+      line to center);
+      grid-column: 2/ span 1;
+      grid-row: 1/ -1;
+      aspect-ratio: 1;
+      width: calc(var(--radius) * 2);
+      content: "";
+      cursor: pointer;
+      transition: transform var(--transition-speed--fast) ease;
+      transform: rotate(var(--offset));
+      transform-origin: center;
+      background: var(--bg-color);
+      @media(forced-colors: active) {
+        background-image: var(--bg-image);
+      }
+      &:hover,
+      &:active,
+      &:focus {
+        transform: scale(1.12) rotate(var(--offset));
+      }
     }
   }
 }
@@ -86,15 +126,16 @@ wwu-donut-chart {
     --chart-color-img-4: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue--lighter-4.png");
     --chart-color-img-5: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue--lighter-5.png");
     --chart-color-img-6: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue--lighter-6.png");
+    --chart-color-img-7: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-blue--lighter-7.png");
   }
   &.green {
     --chart-color-0: #006b3f;
-    --chart-color-1: #c2dc2c;
-    --chart-color-2: #358a30;
-    --chart-color-3: #d3e570;
-    --chart-color-4: #6aa921;
-    --chart-color-5: #e4edb3;
-    --chart-color-6: #9fc812;
+    --chart-color-1: #358a30;
+    --chart-color-2: #6aa921;
+    --chart-color-3: #9fc812;
+    --chart-color-4: #c2dc2c;
+    --chart-color-5: #d3e570;
+    --chart-color-6: #e4edb3;
     --chart-color-7: #f5f6f7;
     --chart-color-img-0: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-green-0.png");
     --chart-color-img-1: url("https://ashlar.blob.core.windows.net/ashlar-theme-files/images/charts/chart-green-1.png");

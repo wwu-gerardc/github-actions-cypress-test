@@ -31,14 +31,19 @@ if (
         for (let i = 0; i < data.length; i++) {
           const pct = data[i].getAttribute("value");
           const label = data[i].innerText;   
+          const slice = document.createElement("div");
+          slice.classList.add("slice");
 
-          data[i].innerHTML = `${label} - ${pct}%`;
-          data[i].style.setProperty('--pct', pct);
+          data[i].innerHTML = `${label} - ${pct}%`;          
           data[i].style.setProperty('--bg-color', `var(--chart-color-${i})`);
           data[i].style.setProperty('--bg-image', `var(--chart-color-img-${i})`);
-          data[i].style.setProperty('--offset', `${offset}turn`);
+          slice.style.setProperty('--pct', pct);
+          slice.style.setProperty('--bg-color', `var(--chart-color-${i})`);
+          slice.style.setProperty('--bg-image', `var(--chart-color-img-${i})`);
+          slice.style.setProperty('--offset', `${offset}turn`);
 
           chart.append(data[i]);
+          chart.append(slice);
 
           offset += parseFloat(pct)/100;
         }    

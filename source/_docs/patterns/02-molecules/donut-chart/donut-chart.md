@@ -1,7 +1,7 @@
 import WWUDonutChart from "./donut-chart.js"
 
 # Donut Chart
-These donut charts can only display eight values or less. If using as markup, the label attribute is required for accessibility, it should describe what is in the dataset. This is included by default with the Drupal block.
+These donut charts can only display **eight values or less**. If using as markup, the label attribute is required for accessibility, it should describe what is in the dataset. This is included by default with the Drupal block.
 
 Include the following script to use this component on your non-Drupal website or application.
 
@@ -41,9 +41,8 @@ Include the following script to use this component on your non-Drupal website or
     <wwu-chart-item value="30">C</wwu-chart-item>
     <wwu-chart-item value="8">D</wwu-chart-item>
     <wwu-chart-item value="7">E</wwu-chart-item>
-    <wwu-chart-item value="2">F</wwu-chart-item>
-    <wwu-chart-item value="12">G</wwu-chart-item>
-    <wwu-chart-item value="34">H</wwu-chart-item>
+    <wwu-chart-item value="48">F</wwu-chart-item>
+
 </wwu-donut-chart>
 
 ```
@@ -54,8 +53,6 @@ Include the following script to use this component on your non-Drupal website or
     <wwu-chart-item value="8">D</wwu-chart-item>
     <wwu-chart-item value="7">E</wwu-chart-item>
     <wwu-chart-item value="2">F</wwu-chart-item>
-    <wwu-chart-item value="12">G</wwu-chart-item>
-    <wwu-chart-item value="34">H</wwu-chart-item>
 </wwu-donut-chart>
 ```
 
