@@ -5,22 +5,39 @@ Molecule: Charts - Donut Chart
 @use "sass:list";
 @use "../../00-utilities/utilities" as *;
 wwu-donut-chart {
-  --radius: 200px;
+  --radius: 50cqw;
+  @media(min-width: $small) {
+    --radius: calc(50cqw / 2);
+  }
   figure {
+    container-type: inline-size;
+
     position: relative;
     display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: repeat(8, 1fr);
+    grid-template-areas: "chart chart"
+    "legend legend";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
     place-items: center;
     margin-bottom: var(--space--lg);
     padding: 0;
-    column-gap: var(--space--xl);
+    @media(min-width: $small) {
+      grid-template-areas: "legend chart"
+      "legend chart"
+      "legend chart"
+      "legend chart"
+      "legend chart"
+      "legend chart"
+      "legend chart"
+      "legend chart";
+      grid-template-columns: auto auto;
+      grid-template-rows: repeat(8, 1fr);
+    }
   }
   figcaption {
     z-index: 1;
     display: grid;
-    grid-column: 2/ span 1;
-    grid-row: 1/ -1;
+    grid-area: chart;
     place-content: center;
     aspect-ratio: 1;
     width: var(--radius);
@@ -33,7 +50,6 @@ wwu-donut-chart {
   }
   wwu-chart-item {
     display: grid;
-    grid-column: 1/ span 1;
     grid-template-columns: auto auto;
     justify-self: start;
     place-content: center;
@@ -41,6 +57,9 @@ wwu-donut-chart {
     column-gap: var(--space--xs);
     cursor: pointer;
     transition: transform var(--transition-speed--fast) ease;
+    @media (min-width: $small) {
+      grid-column: 1/ span 1;
+    }
     &:before {
       forced-color-adjust: none;
 
@@ -60,10 +79,10 @@ wwu-donut-chart {
       arc to calc(50% + 50% * sin(var(--pct) * 3.6deg))
       calc(50% - 50% * cos(var(--pct) * 3.6deg)) of 50% small cw,
       line to center);
-      grid-column: 2/ span 1;
-      grid-row: 1/ -1;
+      grid-area: chart;
       aspect-ratio: 1;
       width: calc(var(--radius) * 2);
+      margin-bottom: var(--space--md);
       content: "";
       cursor: pointer;
       transition: transform var(--transition-speed--fast) ease;
@@ -72,6 +91,9 @@ wwu-donut-chart {
       background: var(--bg-pattern);
       background-color: var(--bg-color);
       background-size: var(--bg-size);
+      @media(min-width: $small) {
+        margin-bottom: 0;
+      }
       &:hover,
       &:active,
       &:focus {
