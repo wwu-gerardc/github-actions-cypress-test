@@ -66,6 +66,7 @@ wwu-donut-chart {
       aspect-ratio: 1;
       width: var(--space--xl);
       content: "";
+      outline: var(--outline--unset);
       background: var(--bg-pattern);
       background-color: var(--bg-color);
       background-size: var(--bg-size);
@@ -107,9 +108,12 @@ wwu-donut-chart {
       @include lightest-blue-bg;
 
       border-radius: var(--border-radius--round);
-      outline: var(--outline--unset);
+      outline: var(--outline--forced-colors);
       &:before {
         outline: solid contrast-color(var(--bg-color)) var(--border-width--sm);
+        @media(forced-colors: active) {
+          outline: var(--outline--forced-colors);
+        }
       }
       + .slice {
         transform: scale(1.12) rotate(var(--offset));

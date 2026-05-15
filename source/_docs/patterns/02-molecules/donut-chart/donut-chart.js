@@ -38,6 +38,7 @@ if (
           data[i].style.setProperty('--bg-color', `var(--chart-color-${i})`);
           data[i].style.setProperty('--bg-pattern', `var(--chart-pattern-${i})`);
           data[i].style.setProperty('--bg-size', `var(--chart-bg-size-${i})`);
+          data[i].setAttribute('tabindex', 0);
           slice.style.setProperty('--pct', pct);          
           slice.style.setProperty('--bg-color', `var(--chart-color-${i})`);
           slice.style.setProperty('--bg-pattern', `var(--chart-pattern-${i})`);
