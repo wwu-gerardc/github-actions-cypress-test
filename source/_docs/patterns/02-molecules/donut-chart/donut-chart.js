@@ -36,10 +36,12 @@ if (
 
           data[i].innerHTML = `${label} - ${pct}%`;          
           data[i].style.setProperty('--bg-color', `var(--chart-color-${i})`);
-          data[i].style.setProperty('--bg-image', `var(--chart-color-img-${i})`);
-          slice.style.setProperty('--pct', pct);
+          data[i].style.setProperty('--bg-pattern', `var(--chart-pattern-${i})`);
+          data[i].style.setProperty('--bg-size', `var(--chart-bg-size-${i})`);
+          slice.style.setProperty('--pct', pct);          
           slice.style.setProperty('--bg-color', `var(--chart-color-${i})`);
-          slice.style.setProperty('--bg-image', `var(--chart-color-img-${i})`);
+          slice.style.setProperty('--bg-pattern', `var(--chart-pattern-${i})`);
+          slice.style.setProperty('--bg-size', `var(--chart-bg-size-${i})`);
           slice.style.setProperty('--offset', `${offset}turn`);
 
           chart.append(data[i]);
