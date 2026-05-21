@@ -7,20 +7,20 @@ Molecule: Charts - Donut Chart
 wwu-donut-chart {
   --radius: 50cqw;
   @media(min-width: $small) {
-    --radius: calc(50cqw / 2);
+    --radius: calc(60cqw / 2);
   }
   figure {
     container-type: inline-size;
 
     position: relative;
     display: grid;
+    grid-auto-rows: auto;
     grid-template-columns: 1fr 1fr;
     place-items: center;
     margin-bottom: var(--space--lg);
     padding: 0;
     @media(min-width: $small) {
-      grid-template-columns: auto auto;
-      grid-template-rows: repeat(8, 1fr);
+      grid-template-columns: 1fr 2fr;
     }
   }
   figcaption {
@@ -38,6 +38,10 @@ wwu-donut-chart {
     text-align: center;
     border-radius: 50%;
     background: var(--page-background);
+    @media(min-width: $small) {
+      grid-column: 2/-1;
+      grid-row: 1/span 8;
+    }
   }
   wwu-chart-item {
     display: grid;
@@ -85,6 +89,8 @@ wwu-donut-chart {
       background-color: var(--bg-color);
       background-size: var(--bg-size);
       @media(min-width: $small) {
+        grid-column: 2/-1;
+        grid-row: 1/span 8;
         margin-bottom: 0;
       }
       &:hover,
