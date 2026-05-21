@@ -14,22 +14,11 @@ wwu-donut-chart {
 
     position: relative;
     display: grid;
-    grid-template-areas: "chart chart"
-    "legend legend";
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
     place-items: center;
     margin-bottom: var(--space--lg);
     padding: 0;
     @media(min-width: $small) {
-      grid-template-areas: "legend chart"
-      "legend chart"
-      "legend chart"
-      "legend chart"
-      "legend chart"
-      "legend chart"
-      "legend chart"
-      "legend chart";
       grid-template-columns: auto auto;
       grid-template-rows: repeat(8, 1fr);
     }
@@ -38,6 +27,8 @@ wwu-donut-chart {
     z-index: 1;
     display: grid;
     grid-area: chart;
+    grid-column: 1/ -1;
+    grid-row: 1/ 1;
     place-content: center;
     aspect-ratio: 1;
     width: var(--radius);
@@ -80,7 +71,8 @@ wwu-donut-chart {
       arc to calc(50% + 50% * sin(var(--pct) * 3.6deg))
       calc(50% - 50% * cos(var(--pct) * 3.6deg)) of 50% small cw,
       line to center);
-      grid-area: chart;
+      grid-column: 1/ -1;
+      grid-row: 1/ 1;
       aspect-ratio: 1;
       width: calc(var(--radius) * 2);
       margin-bottom: var(--space--md);
