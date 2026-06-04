@@ -26,27 +26,34 @@ if (
 
         const data = this.querySelectorAll("wwu-chart-item");
         const chart = this.querySelector("figure");
+        const list = document.createElement("ul");
+        chart.append(list);
+      
         let offset = 0;
 
         for (let i = 0; i < data.length; i++) {
           const pct = data[i].getAttribute("value");
           const label = data[i].innerText;   
-          const slice = document.createElement("div");
+          const chart_item = document.createElement("li");
+          const slice = document.createElement("li");
+          
+          chart_item.classList.add("wwu-chart-item");
+          chart_item.innerHTML = `${label} - ${pct}%`;          
+          chart_item.style.setProperty('--bg-color', `var(--chart-color-${i})`);
+          chart_item.style.setProperty('--bg-pattern', `var(--chart-pattern-${i})`);
+          chart_item.style.setProperty('--bg-size', `var(--chart-bg-size-${i})`);
+          chart_item.setAttribute('tabindex', 0);
+          
           slice.classList.add("slice");
-
-          data[i].innerHTML = `${label} - ${pct}%`;          
-          data[i].style.setProperty('--bg-color', `var(--chart-color-${i})`);
-          data[i].style.setProperty('--bg-pattern', `var(--chart-pattern-${i})`);
-          data[i].style.setProperty('--bg-size', `var(--chart-bg-size-${i})`);
-          data[i].setAttribute('tabindex', 0);
+          slice.setAttribute("aria-hidden", true);
           slice.style.setProperty('--pct', pct);          
           slice.style.setProperty('--bg-color', `var(--chart-color-${i})`);
           slice.style.setProperty('--bg-pattern', `var(--chart-pattern-${i})`);
           slice.style.setProperty('--bg-size', `var(--chart-bg-size-${i})`);
           slice.style.setProperty('--offset', `${offset}turn`);
 
-          chart.append(data[i]);
-          chart.append(slice);
+          list.append(chart_item);
+          list.append(slice);
 
           offset += parseFloat(pct)/100;
         }    

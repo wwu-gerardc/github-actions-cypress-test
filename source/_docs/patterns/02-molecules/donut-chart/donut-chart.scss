@@ -14,19 +14,19 @@ wwu-donut-chart {
 
     position: relative;
     display: grid;
-    grid-auto-rows: auto;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: calc((var(--radius) * 2) - var(--space--lg)) auto;
     place-items: center;
     margin-bottom: var(--space--lg);
     padding: 0;
     @media(min-width: $small) {
       grid-template-columns: 1fr 2fr;
+      grid-template-rows: unset;
     }
   }
   figcaption {
     z-index: 1;
     display: grid;
-    grid-area: chart;
     grid-column: 1/ -1;
     grid-row: 1/ 1;
     place-content: center;
@@ -43,7 +43,25 @@ wwu-donut-chart {
       grid-row: 1/span 8;
     }
   }
+  ul {
+    display: grid;
+    grid-auto-rows: auto;
+    grid-column: 1/-1;
+    grid-row: 1/-1;
+    grid-template-columns: 1fr 1fr;
+    place-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    @media(min-width: $small) {
+      grid-template-columns: 1fr 2fr;
+    }
+  }
   wwu-chart-item {
+    display: none;
+  }
+  .wwu-chart-item {
     display: grid;
     grid-template-columns: auto auto;
     justify-self: start;
