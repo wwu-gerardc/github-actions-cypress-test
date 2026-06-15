@@ -24,7 +24,7 @@ After completing section 2, you can navigate to the site in your browser and the
 
 Clone this repository:
 
-`git clone https://bitbucket.org/wwuweb/ashlar.git`
+`git clone https://git.eis.wwu.edu/webtech/ashlar.git`
 
 Get into the `/ashlar` folder, install packages, and run gulp to compile the theme files using the following commands:
 
@@ -75,7 +75,7 @@ SASS files that do not have the prefix (file.scss) are instead compiled into the
 
 Ashlar uses the [Cypress testing framework](https://www.cypress.io/) for end-to-end (E2E) automated testing of patterns and components. These tests ensure the theme meets brand and accessibility guidelines, and the patterns continue working as expected.
 
-We use Cypress in our continuous integration (CI) workflow when creating pull requests, and run the tests through Github or Bitbucket. You can also run tests locally before committing code, if you want to verify locally the tests will pass. Cypress can be run either through the app, or through the command line.
+We use Cypress in our continuous integration (CI) workflow when creating pull requests, and run the tests through Github or Gitlab. You can also run tests locally before committing code, if you want to verify locally the tests will pass. Cypress can be run either through the app, or through the command line.
 
 #### Using the Cypress app
 

@@ -7,7 +7,7 @@
     "theme",
     "twig"
   ],
-  "homepage": "https://bitbucket.org/wwuweb/ashlar/",
+  "homepage": "https://ashlar.wwu.edu",
   "license": "GPL-2.0",
   "authors": [
     {
@@ -15,8 +15,7 @@
     }
   ],
   "support": {
-    "issues": "https://wp.wwu.edu/webtech/",
-    "source": "https://bitbucket.org/wwuweb/ashlar/"
+    "issues": "https://webtech.wwu.edu"
   },
   "minimum-stability": "dev",
   "require": {    

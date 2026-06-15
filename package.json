@@ -30,7 +30,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/wwuweb/ashlar/"
+    "url": "https://git.eis.wwu.edu/webtech/ashlar"
   },
   "license": "GPL-2.0",
   "dependencies": {
