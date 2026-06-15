@@ -8,6 +8,7 @@ export function runAutoA11yTests() {
   
     it("passes color contrast in dark mode", () => {
       cy.get("html").invoke("attr", "data-theme", "dark")
+      cy.wait(2000) // wait for theme to update
       cy.injectAxe()
       cy.checkA11y({
         exclude: '.navbar--fixed-top, .theme-doc-sidebar-container, .theme-doc-breadcrumbs, .theme-code-block, .table-of-contents',

@@ -196,7 +196,7 @@ html:not(.desktop-hamburger-on) {
 2. Dark Mode
 ------------------------------------------------------------------------------*/
 [data-theme="dark"] {
-  --button-color: var(--blue--lighter--80);
+  --button-color: var(--white);
   --menu-bg-color: var(--black);
 }
 [data-theme="dark"] wwu-header {

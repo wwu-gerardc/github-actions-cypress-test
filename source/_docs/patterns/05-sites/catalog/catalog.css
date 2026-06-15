@@ -74,6 +74,7 @@ table.block_n2_and_content td {
 table.block_n2_and_content h1,
 table.block_n2_and_content .header {
   color: var(--h1-color);
+  font-weight: var(--font-weight--bold);
 }
 .tooltip h2,
 .tooltip .header_2,
@@ -85,14 +86,16 @@ table.block_n2_and_content .header_2,
 .toplevel_popup .n2_search_header,
 table.block_n2_and_content .n2_search_header {
   color: var(--h2-color);
+  font-weight: var(--font-weight--bold);
 }
-.tooltip h3,
-.tooltip .header_3,
 .toplevel_popup h3,
 .toplevel_popup .header_3,
 table.block_n2_and_content h3,
-table.block_n2_and_content .header_3 {
+table.block_n2_and_content .header_3,
+.tooltip h3,
+.tooltip .header_3 {
   color: var(--h3-color);
+  font-weight: var(--font-weight--bold);
 }
 .tooltip h4,
 .tooltip .header_4,
@@ -101,6 +104,7 @@ table.block_n2_and_content .header_3 {
 table.block_n2_and_content h4,
 table.block_n2_and_content .header_4 {
   color: var(--h4-color);
+  font-weight: var(--font-weight--bold);
 }
 .toplevel_popup h5,
 .toplevel_popup .header_5,
@@ -109,6 +113,7 @@ table.block_n2_and_content .header_5,
 .tooltip h5,
 .tooltip .header_5 {
   color: var(--h5-color);
+  font-weight: var(--font-weight--bold);
 }
 .tooltip a.navbar:link,
 .tooltip a.navbar:visited,

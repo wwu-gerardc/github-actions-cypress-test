@@ -130,9 +130,9 @@ const config = {
           label: 'Changelog', 
           position: 'left'},
           {
-            to: 'https://bitbucket.org/wwuweb/ashlar/',
+            to: 'https://git.eis.wwu.edu/webtech/ashlar',
             target: '_self',
-            label: 'BitBucket',
+            label: 'Git',
             position: 'right',
           },
           /*{

@@ -14,6 +14,7 @@ Molecule: Event List
     grid-column-gap: var(--space--sm);
     grid-template-areas: "date title"
     "date location"
+    "date body"
     "icon body"
     "icon body";
     grid-template-columns: 4rem auto;
