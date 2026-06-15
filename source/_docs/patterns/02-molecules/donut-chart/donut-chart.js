@@ -1,43 +1,67 @@
 if (
   (typeof context == "undefined" || (typeof context != "undefined" && context == document)) // makes it work in Drupal
   && typeof window !== "undefined" // makes it work in Node.js server side rendering
-  ) {
+) {
   const donut_chart_template = document.createElement("template");
   donut_chart_template.innerHTML = `
     <!--link rel="stylesheet" href="https://ashlar.blob.core.windows.net/ashlar-theme-files/css/components/donut-chart.css" /-->
-    <svg viewBox="0 0 31.83 31.83" role="img"> 
-    </svg>
+    <figure>
+      <figcaption>
+      </figcaption>      
+    </figure>
   `;
-
+  
   class WWUDonutChart extends HTMLElement {
     constructor() {
       super();
     }
-
+    
     connectedCallback() {
       let element_exists = this.classList.contains("element-created");
       if (!element_exists) {
         this.appendChild(donut_chart_template.content.cloneNode(true));
         this.classList.add("element-created");
-        const data = this.querySelectorAll("li");
-        const svg = this.querySelector("svg");
+
+        this.querySelector("figcaption").innerText = this.getAttribute("label");
+
+        const data = this.querySelectorAll("wwu-chart-item");
+        const chart = this.querySelector("figure");
+        const list = document.createElement("ul");
+        chart.append(list);
+      
         let offset = 0;
 
-        svg.setAttribute("aria-label", "Donut chart of " + this.getAttribute("label"))
-        
         for (let i = 0; i < data.length; i++) {
-          const percent = data[i].innerText.substr(0, data[i].innerText.indexOf("%"));         
+          const pct = data[i].getAttribute("value");
+          const label = data[i].innerText;   
+          const chart_item = document.createElement("li");
+          const slice = document.createElement("li");
+          
+          chart_item.classList.add("wwu-chart-item");
+          chart_item.innerHTML = `${label} - ${pct}%`;          
+          chart_item.style.setProperty('--bg-color', `var(--chart-color-${i})`);
+          chart_item.style.setProperty('--bg-pattern', `var(--chart-pattern-${i})`);
+          chart_item.style.setProperty('--bg-size', `var(--chart-bg-size-${i})`);
+          chart_item.setAttribute('tabindex', 0);
+          
+          slice.classList.add("slice");
+          slice.setAttribute("aria-hidden", true);
+          slice.style.setProperty('--pct', pct);          
+          slice.style.setProperty('--bg-color', `var(--chart-color-${i})`);
+          slice.style.setProperty('--bg-pattern', `var(--chart-pattern-${i})`);
+          slice.style.setProperty('--bg-size', `var(--chart-bg-size-${i})`);
+          slice.style.setProperty('--offset', `${offset}turn`);
 
-          const slice = `
-          <circle r="15.915" cx="15.915" cy="15.915" 
-          style="stroke-dashoffset: ${offset}; 
-          stroke-dasharray: ${percent} 100;"/>`
-          svg.innerHTML += slice;
-          offset -= parseFloat(percent);
-        }      
+          list.append(chart_item);
+          list.append(slice);
+
+          offset += parseFloat(pct)/100;
+        }    
       }
     }
   }
-
-  window.customElements.define("wwu-donut-chart", WWUDonutChart);
+  
+  if (!window.customElements.get('wwu-donut-chart')) {        
+    window.customElements.define("wwu-donut-chart", WWUDonutChart);    
+  }  
 }

@@ -1,7 +1,7 @@
 import WWUDonutChart from "./donut-chart.js"
 
 # Donut Chart
-These donut charts can only display eight values or less. If using as markup, the label attribute is required for accessibility, it should describe what is in the dataset. This is included by default with the Drupal block.
+These donut charts can only display **eight values or less**. If using as markup, the label attribute is required for accessibility, it should describe what is in the dataset. This is included by default with the Drupal block.
 
 Include the following script to use this component on your non-Drupal website or application.
 
@@ -11,81 +11,72 @@ Include the following script to use this component on your non-Drupal website or
 
 ## Blue (Default)
 <wwu-donut-chart label="Student Population">
-    <ul>
-        <li>10% Freshman</li>
-        <li>14% Sophomore</li>
-        <li>22% Junior</li>
-        <li>35% Senior</li>
-        <li>7% Post Bac</li>
-        <li>2% Grad Student</li>
-        <li>5% Alumni</li>
-        <li>5% Other</li>
-    </ul>
+    <wwu-chart-item value="10">Freshman</wwu-chart-item>
+    <wwu-chart-item value="14">Sophomore</wwu-chart-item>
+    <wwu-chart-item value="22">Junior</wwu-chart-item>
+    <wwu-chart-item value="35">Senior</wwu-chart-item>
+    <wwu-chart-item value="7">Post Bac</wwu-chart-item>
+    <wwu-chart-item value="2">Grad Student</wwu-chart-item>
+    <wwu-chart-item value="5">Alumni</wwu-chart-item>
+    <wwu-chart-item value="5">Other</wwu-chart-item>
 </wwu-donut-chart>
 
-    <wwu-donut-chart label="Student Population">
-        <ul>
-            <li>10% Freshman</li>
-            <li>14% Sophomore</li>
-            <li>22% Junior</li>
-            <li>35% Senior</li>
-            <li>7% Post Bac</li>
-            <li>2% Grad Student</li>
-            <li>5% Alumni</li>
-            <li>5% Other</li>
-        </ul>
-    </wwu-donut-chart>
+```
+<wwu-donut-chart label="Student Population">
+    <wwu-chart-item value="10">Freshman</wwu-chart-item>
+    <wwu-chart-item value="14">Sophomore</wwu-chart-item>
+    <wwu-chart-item value="22">Junior</wwu-chart-item>
+    <wwu-chart-item value="35">Senior</wwu-chart-item>
+    <wwu-chart-item value="7">Post Bac</wwu-chart-item>
+    <wwu-chart-item value="2">Grad Student</wwu-chart-item>
+    <wwu-chart-item value="5">Alumni</wwu-chart-item>
+    <wwu-chart-item value="5">Other</wwu-chart-item>
+</wwu-donut-chart>
+```
 
 ## Light Blue
 <wwu-donut-chart class="light-blue" label="Letters">
-    <ul>
-        <li>5% A</li>
-        <li>2% B</li>
-        <li>30% C</li>
-        <li>8% D</li>
-        <li>7% E</li>
-        <li>2% F</li>
-        <li>12% G</li>
-        <li>34% H</li>
-    </ul>
+    <wwu-chart-item value="5">A</wwu-chart-item>
+    <wwu-chart-item value="2">B</wwu-chart-item>
+    <wwu-chart-item value="30">C</wwu-chart-item>
+    <wwu-chart-item value="8">D</wwu-chart-item>
+    <wwu-chart-item value="7">E</wwu-chart-item>
+    <wwu-chart-item value="48">F</wwu-chart-item>
+
 </wwu-donut-chart>
 
-    <wwu-donut-chart class="light-blue" label="Letters">
-        <ul>
-            <li>5% A</li>
-            <li>2% B</li>
-            <li>30% C</li>
-            <li>8% D</li>
-            <li>7% E</li>
-            <li>2% F</li>
-            <li>12% G</li>
-            <li>34% H</li>
-        </ul>
-    </wwu-donut-chart>
+```
+<wwu-donut-chart class="light-blue" label="Letters">
+    <wwu-chart-item value="5">A</wwu-chart-item>
+    <wwu-chart-item value="2">B</wwu-chart-item>
+    <wwu-chart-item value="30">C</wwu-chart-item>
+    <wwu-chart-item value="8">D</wwu-chart-item>
+    <wwu-chart-item value="7">E</wwu-chart-item>
+    <wwu-chart-item value="2">F</wwu-chart-item>
+</wwu-donut-chart>
+```
 
 ## Green
 <wwu-donut-chart class="green" label="Student Population">
-    <ul>
-        <li>9.1% Freshman</li>
-        <li>14.8% Sophomore</li>
-        <li>21.9% Junior</li>
-        <li>35.2% Senior</li>
-        <li>6.25% Post Bac</li>
-        <li>2.75% Grad Student</li>
-        <li>4.5% Alumni</li>
-        <li>5.5% Other</li>
-    </ul>
+    <wwu-chart-item value="9.1"> Freshman</wwu-chart-item>
+    <wwu-chart-item value="14.8"> Sophomore</wwu-chart-item>
+    <wwu-chart-item value="21.9"> Junior</wwu-chart-item>
+    <wwu-chart-item value="35.2"> Senior</wwu-chart-item>
+    <wwu-chart-item value="6.2"> Post Bac</wwu-chart-item>
+    <wwu-chart-item value="2.7"> Grad Student</wwu-chart-item>
+    <wwu-chart-item value="4.5"> Alumni</wwu-chart-item>
+    <wwu-chart-item value="5.5"> Other</wwu-chart-item>
 </wwu-donut-chart>
 
-    <wwu-donut-chart class="green" label="Student Population">
-        <ul>
-            <li>9.1% Freshman</li>
-            <li>14.8% Sophomore</li>
-            <li>21.9% Junior</li>
-            <li>35.2% Senior</li>
-            <li>6.25% Post Bac</li>
-            <li>2.75% Grad Student</li>
-            <li>4.5% Alumni</li>
-            <li>5.5% Other</li>
-        </ul>
-    </wwu-donut-chart>
+```
+<wwu-donut-chart class="green" label="Student Population">
+    <wwu-chart-item value="9.1"> Freshman</wwu-chart-item>
+    <wwu-chart-item value="14.8"> Sophomore</wwu-chart-item>
+    <wwu-chart-item value="21.9"> Junior</wwu-chart-item>
+    <wwu-chart-item value="35.2"> Senior</wwu-chart-item>
+    <wwu-chart-item value="6.2"> Post Bac</wwu-chart-item>
+    <wwu-chart-item value="2.7"> Grad Student</wwu-chart-item>
+    <wwu-chart-item value="4.5"> Alumni</wwu-chart-item>
+    <wwu-chart-item value="5.5"> Other</wwu-chart-item>
+</wwu-donut-chart>
+```
